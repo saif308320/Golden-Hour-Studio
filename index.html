@@ -1,0 +1,1872 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Hour Studio — Destination Wedding Photography & Film</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-ivory: #faf6f2;
+            --color-blush: #e8c4c0;
+            --color-gold: #c9a24b;
+            --color-gold-dark: #b08d3b;
+            --color-charcoal: #2c2b29;
+            --color-muted: #787570;
+            --color-white: #ffffff;
+            --color-border: #eadfd7;
+            
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Inter', sans-serif;
+            
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --radius-btn: 10px;
+            --radius-card: 14px;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-ivory);
+            color: var(--color-charcoal);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Buttons & Inputs */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border-radius: var(--radius-btn);
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            border: 1px solid transparent;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .btn-gold {
+            background-color: var(--color-gold);
+            color: var(--color-white);
+        }
+
+        .btn-gold:hover {
+            background-color: var(--color-gold-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(201, 162, 75, 0.2);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border-color: var(--color-gold);
+            color: var(--color-gold);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--color-gold);
+            color: var(--color-white);
+            transform: translateY(-2px);
+        }
+
+        .btn-dark {
+            background-color: var(--color-charcoal);
+            color: var(--color-ivory);
+        }
+
+        .btn-dark:hover {
+            background-color: var(--color-gold);
+            color: var(--color-white);
+            transform: translateY(-2px);
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 14px 18px;
+            font-family: var(--font-body);
+            font-size: 15px;
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-btn);
+            color: var(--color-charcoal);
+            outline: none;
+            transition: var(--transition-smooth);
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: var(--color-gold);
+            box-shadow: 0 0 0 3px rgba(201, 162, 75, 0.1);
+        }
+
+        /* Scroll Reveal Utility */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 1. Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(250, 246, 242, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-border);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 90px;
+            position: relative;
+        }
+
+        .nav-logo {
+            font-family: var(--font-heading);
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: var(--color-charcoal);
+            text-align: center;
+            flex: 1;
+        }
+
+        .nav-logo span {
+            color: var(--color-gold);
+            font-style: italic;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+            flex: 1;
+        }
+
+        .nav-links.left {
+            justify-content: flex-start;
+        }
+
+        .nav-links.right {
+            justify-content: flex-end;
+        }
+
+        .nav-link {
+            font-size: 13px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-charcoal);
+            position: relative;
+            padding: 4px 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--color-gold);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            width: 30px;
+            height: 20px;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            background: var(--color-charcoal);
+            border-radius: 2px;
+            transition: var(--transition-smooth);
+        }
+
+        .hamburger span:nth-child(1) { top: 0; }
+        .hamburger span:nth-child(2) { top: 9px; }
+        .hamburger span:nth-child(3) { top: 18px; }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg);
+            top: 9px;
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg);
+            top: 9px;
+        }
+
+        /* Mobile Nav Overlay */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background: var(--color-ivory);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            transition: var(--transition-smooth);
+            padding: 40px;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu a {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            color: var(--color-charcoal);
+            transition: var(--transition-smooth);
+            text-align: center;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--color-gold);
+        }
+
+        .mobile-menu .btn {
+            font-family: var(--font-body);
+            font-size: 14px;
+        }
+
+        /* 2. Full-bleed Hero */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(44, 43, 41, 0.45), rgba(44, 43, 41, 0.45)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2000&q=80') no-repeat center center/cover;
+            color: var(--color-white);
+            padding: 120px 20px 60px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-subtitle {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 20px;
+            color: var(--color-blush);
+            font-weight: 500;
+        }
+
+        .hero-title {
+            font-size: clamp(38px, 6vw, 72px);
+            font-weight: 500;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-title span {
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .hero-desc {
+            font-size: clamp(15px, 2vw, 18px);
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto 36px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        /* 3. Marquee Strip */
+        .marquee-strip {
+            background-color: var(--color-charcoal);
+            color: var(--color-ivory);
+            padding: 20px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .marquee-track {
+            display: inline-block;
+            animation: marquee 25s linear infinite;
+        }
+
+        .marquee-item {
+            display: inline-block;
+            font-family: var(--font-heading);
+            font-size: 20px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0 40px;
+        }
+
+        .marquee-item span {
+            color: var(--color-gold);
+            margin-left: 40px;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Section Layout Common */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 64px;
+        }
+
+        .section-subtitle {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--color-gold);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-size: clamp(30px, 4vw, 48px);
+            color: var(--color-charcoal);
+            letter-spacing: -0.01em;
+        }
+
+        /* 4. Portfolio Gallery */
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--color-border);
+            padding: 10px 24px;
+            border-radius: var(--radius-btn);
+            font-family: var(--font-body);
+            font-size: 13px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-muted);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--color-gold);
+            border-color: var(--color-gold);
+            color: var(--color-white);
+        }
+
+        .masonry-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            cursor: pointer;
+            height: 420px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            transition: var(--transition-smooth);
+        }
+
+        .gallery-item:nth-child(even) {
+            height: 480px;
+            transform: translateY(20px);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px 24px;
+            background: linear-gradient(to top, rgba(44,43,41,0.85), transparent);
+            color: var(--color-white);
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay h4 {
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+
+        .gallery-overlay p {
+            font-size: 13px;
+            color: var(--color-blush);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Lightbox Modal */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(44, 43, 41, 0.95);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition-smooth);
+            padding: 40px;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox img {
+            max-height: 85vh;
+            max-width: 90vw;
+            border-radius: var(--radius-card);
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: none;
+            border: none;
+            color: var(--color-white);
+            font-size: 36px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .lightbox-close:hover {
+            color: var(--color-gold);
+        }
+
+        /* 5. Featured Wedding Story */
+        .featured-story {
+            background-color: var(--color-white);
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+            border: 1px solid var(--color-border);
+        }
+
+        .featured-img-wrap {
+            position: relative;
+            min-height: 500px;
+        }
+
+        .featured-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .featured-content {
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-quote {
+            font-family: var(--font-heading);
+            font-size: clamp(22px, 3vw, 26px);
+            font-style: italic;
+            line-height: 1.4;
+            color: var(--color-charcoal);
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .featured-quote::before {
+            content: '“';
+            font-size: 80px;
+            color: var(--color-blush);
+            position: absolute;
+            top: -40px;
+            left: -20px;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        .featured-narrative {
+            font-size: 15px;
+            color: var(--color-muted);
+            margin-bottom: 36px;
+        }
+
+        /* 6. Packages & Pricing */
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .package-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-card);
+            padding: 48px 36px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: var(--transition-smooth);
+        }
+
+        .package-card.featured {
+            border-color: var(--color-gold);
+            box-shadow: 0 15px 40px rgba(201, 162, 75, 0.1);
+            transform: translateY(-10px);
+        }
+
+        .package-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--color-gold);
+            color: var(--color-white);
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            padding: 6px 16px;
+            border-radius: 20px;
+        }
+
+        .package-title {
+            font-size: 26px;
+            margin-bottom: 8px;
+            color: var(--color-charcoal);
+        }
+
+        .package-desc {
+            font-size: 14px;
+            color: var(--color-muted);
+            margin-bottom: 24px;
+        }
+
+        .package-price {
+            font-family: var(--font-heading);
+            font-size: 42px;
+            font-weight: 600;
+            color: var(--color-charcoal);
+            margin-bottom: 32px;
+        }
+
+        .package-price span {
+            font-size: 15px;
+            font-family: var(--font-body);
+            color: var(--color-muted);
+            font-weight: 400;
+        }
+
+        .package-features {
+            margin-bottom: 40px;
+            flex-grow: 1;
+        }
+
+        .package-features li {
+            font-size: 14px;
+            color: var(--color-charcoal);
+            padding: 10px 0;
+            border-bottom: 1px solid var(--color-ivory);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .package-features li::before {
+            content: '✓';
+            color: var(--color-gold);
+            font-weight: bold;
+        }
+
+        /* 7. Process */
+        .process-strip {
+            background-color: var(--color-charcoal);
+            color: var(--color-ivory);
+        }
+
+        .process-strip .section-title, .process-strip .section-subtitle {
+            color: var(--color-ivory);
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+        }
+
+        .process-step {
+            position: relative;
+            padding: 32px;
+            border: 1px solid rgba(250, 246, 242, 0.1);
+            border-radius: var(--radius-card);
+            transition: var(--transition-smooth);
+        }
+
+        .process-step:hover {
+            border-color: var(--color-gold);
+            transform: translateY(-5px);
+        }
+
+        .step-num {
+            font-family: var(--font-heading);
+            font-size: 48px;
+            color: var(--color-gold);
+            margin-bottom: 16px;
+            line-height: 1;
+        }
+
+        .step-title {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: var(--color-white);
+        }
+
+        .step-desc {
+            font-size: 14px;
+            color: rgba(250, 246, 242, 0.7);
+        }
+
+        /* 8. About the Photographer */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .about-img-wrap {
+            position: relative;
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            height: 550px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+        }
+
+        .about-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-text h3 {
+            font-size: clamp(30px, 3vw, 42px);
+            margin-bottom: 24px;
+        }
+
+        .about-text p {
+            font-size: 16px;
+            color: var(--color-muted);
+            margin-bottom: 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .stat-item h4 {
+            font-family: var(--font-heading);
+            font-size: 38px;
+            color: var(--color-gold);
+            margin-bottom: 4px;
+        }
+
+        .stat-item p {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-charcoal);
+            font-weight: 500;
+            margin: 0;
+        }
+
+        /* 9. Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .testimonial-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-card);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            transition: var(--transition-smooth);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+        }
+
+        .testimonial-text {
+            font-size: 15px;
+            font-style: italic;
+            color: var(--color-charcoal);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .testimonial-author h5 {
+            font-family: var(--font-body);
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--color-charcoal);
+        }
+
+        .testimonial-author span {
+            font-size: 13px;
+            color: var(--color-muted);
+        }
+
+        /* 10. Press / Publications */
+        .press-strip {
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+            padding: 60px 0;
+            background: var(--color-white);
+        }
+
+        .press-logos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            opacity: 0.6;
+            filter: grayscale(100%);
+            transition: var(--transition-smooth);
+        }
+
+        .press-logos:hover {
+            opacity: 1;
+            filter: grayscale(0%);
+        }
+
+        .press-logo {
+            font-family: var(--font-heading);
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--color-charcoal);
+        }
+
+        /* 11. Journal / Blog Preview */
+        .journal-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .journal-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition-smooth);
+        }
+
+        .journal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        }
+
+        .journal-img {
+            height: 240px;
+            overflow: hidden;
+        }
+
+        .journal-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .journal-card:hover .journal-img img {
+            transform: scale(1.05);
+        }
+
+        .journal-content {
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .journal-date {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--color-gold);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .journal-title {
+            font-size: 22px;
+            margin-bottom: 12px;
+            color: var(--color-charcoal);
+        }
+
+        .journal-excerpt {
+            font-size: 14px;
+            color: var(--color-muted);
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .journal-link {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-charcoal);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition-smooth);
+        }
+
+        .journal-link:hover {
+            color: var(--color-gold);
+            gap: 12px;
+        }
+
+        /* 12. Booking Form */
+        .booking-section {
+            background: linear-gradient(rgba(44,43,41,0.03), rgba(44,43,41,0.03));
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .booking-form-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-card);
+            padding: 60px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+        }
+
+        .booking-form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group.full {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-charcoal);
+        }
+
+        /* 13. Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-card);
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            transition: var(--transition-smooth);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-gold);
+        }
+
+        .contact-icon {
+            font-size: 28px;
+            color: var(--color-gold);
+            margin-bottom: 16px;
+        }
+
+        .contact-card h4 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: var(--color-charcoal);
+        }
+
+        .contact-card p {
+            font-size: 15px;
+            color: var(--color-muted);
+        }
+
+        /* 14. Footer */
+        footer {
+            background-color: var(--color-charcoal);
+            color: var(--color-ivory);
+            padding: 80px 0 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid rgba(250,246,242,0.1);
+        }
+
+        .footer-logo {
+            font-family: var(--font-heading);
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .footer-logo span {
+            color: var(--color-gold);
+            font-style: italic;
+        }
+
+        .footer-blurb {
+            font-size: 14px;
+            color: rgba(250,246,242,0.7);
+            max-width: 350px;
+            margin-bottom: 24px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid rgba(250,246,242,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: var(--color-ivory);
+            transition: var(--transition-smooth);
+        }
+
+        .social-link:hover {
+            background: var(--color-gold);
+            border-color: var(--color-gold);
+        }
+
+        .footer-col h5 {
+            font-family: var(--font-body);
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 24px;
+            color: var(--color-white);
+        }
+
+        .footer-col ul {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-col a {
+            font-size: 14px;
+            color: rgba(250,246,242,0.7);
+            transition: var(--transition-smooth);
+        }
+
+        .footer-col a:hover {
+            color: var(--color-gold);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: rgba(250,246,242,0.5);
+        }
+
+        /* Modal Overlay System */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(44, 43, 41, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition-smooth);
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            background: var(--color-white);
+            border-radius: var(--radius-card);
+            padding: 48px;
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+            transform: scale(0.95);
+            transition: var(--transition-smooth);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: scale(1);
+        }
+
+        .modal-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(201, 162, 75, 0.1);
+            color: var(--color-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin: 0 auto 24px;
+        }
+
+        .modal-card h3 {
+            font-size: 28px;
+            margin-bottom: 12px;
+            color: var(--color-charcoal);
+        }
+
+        .modal-card p {
+            font-size: 15px;
+            color: var(--color-muted);
+            margin-bottom: 32px;
+        }
+
+        /* Responsive Media Queries */
+        @media (max-width: 1199px) {
+            .masonry-grid, .packages-grid, .testimonials-grid, .journal-grid, .contact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .featured-story, .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .featured-img-wrap, .about-img-wrap {
+                min-height: 400px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .nav-links {
+                display: none;
+            }
+            .hamburger {
+                display: block;
+            }
+            .nav-container {
+                justify-content: space-between;
+                height: 75px;
+            }
+            .nav-logo {
+                flex: none;
+                font-size: 22px;
+                text-align: left;
+            }
+            .masonry-grid, .packages-grid, .testimonials-grid, .journal-grid, .contact-grid, .process-grid, .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .gallery-item, .gallery-item:nth-child(even) {
+                height: 350px;
+                transform: none;
+            }
+            .featured-content, .about-text {
+                padding: 40px 20px;
+            }
+            .booking-form {
+                grid-template-columns: 1fr;
+            }
+            .form-group.full {
+                grid-column: span 1;
+            }
+            .booking-form-wrapper {
+                padding: 30px 20px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+            section {
+                padding: 60px 0;
+            }
+            .hero {
+                min-height: 600px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container nav-container">
+            <div class="nav-links left">
+                <a href="#portfolio" class="nav-link">Portfolio</a>
+                <a href="#packages" class="nav-link">Packages</a>
+                <a href="#about" class="nav-link">About</a>
+            </div>
+            
+            <a href="#" class="nav-logo">Golden Hour <span>Studio</span></a>
+
+            <div class="nav-links right">
+                <a href="#journal" class="nav-link">Journal</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="#booking" class="btn btn-outline" style="padding: 10px 20px; font-size: 12px;">Check Availability</a>
+            </div>
+
+            <button class="hamburger" id="hamburger" aria-label="Toggle Navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#portfolio" class="mobile-link">Portfolio</a>
+        <a href="#packages" class="mobile-link">Packages</a>
+        <a href="#about" class="mobile-link">About</a>
+        <a href="#journal" class="mobile-link">Journal</a>
+        <a href="#contact" class="mobile-link">Contact</a>
+        <a href="#booking" class="btn btn-gold mobile-link" style="padding: 14px 28px;">Check Availability</a>
+    </div>
+
+    <section class="hero" id="home">
+        <div class="hero-content reveal">
+            <p class="hero-subtitle">Destination Wedding Photography & Film • Est. 2014</p>
+            <h1 class="hero-title">Timeless Stories of <span>Modern Romance</span></h1>
+            <p class="hero-desc">Documenting soulful destination weddings and cinematic love stories across the world's most breathtaking landscapes with artistic precision.</p>
+            <div class="hero-actions">
+                <a href="#portfolio" class="btn btn-gold">Explore Work</a>
+                <a href="#booking" class="btn btn-outline" style="border-color: #fff; color: #fff;">Inquire Now</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="marquee-strip">
+        <div class="marquee-track">
+            <div class="marquee-item">Destination Weddings <span>/</span></div>
+            <div class="marquee-item">Cinematic Films <span>/</span></div>
+            <div class="marquee-item">Fine-Art Prints <span>/</span></div>
+            <div class="marquee-item">Award-Winning <span>/</span></div>
+            <div class="marquee-item">Destination Weddings <span>/</span></div>
+            <div class="marquee-item">Cinematic Films <span>/</span></div>
+            <div class="marquee-item">Fine-Art Prints <span>/</span></div>
+            <div class="marquee-item">Award-Winning <span>/</span></div>
+        </div>
+    </div>
+
+    <section id="portfolio">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-subtitle">Selected Portfolio</p>
+                <h2 class="section-title">Captured Moments in Time</h2>
+            </div>
+
+            <div class="portfolio-filters reveal">
+                <button class="filter-btn active" data-filter="all">All Stories</button>
+                <button class="filter-btn" data-filter="weddings">Weddings</button>
+                <button class="filter-btn" data-filter="engagements">Engagements</button>
+                <button class="filter-btn" data-filter="elopements">Elopements</button>
+            </div>
+
+            <div class="masonry-grid reveal">
+                <div class="gallery-item" data-category="weddings" onclick="openLightbox('https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=80')">
+                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" alt="Lake Como Wedding">
+                    <div class="gallery-overlay">
+                        <h4>Lake Como Elegance</h4>
+                        <p>Weddings</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="elopements" onclick="openLightbox('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=80')">
+                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" alt="Iceland Elopement">
+                    <div class="gallery-overlay">
+                        <h4>Glacial Highlands</h4>
+                        <p>Elopements</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="engagements" onclick="openLightbox('https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=1200&q=80')">
+                    <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=800&q=80" alt="Parisian Engagement">
+                    <div class="gallery-overlay">
+                        <h4>Parisian Sunrise</h4>
+                        <p>Engagements</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-category="weddings" onclick="openLightbox('https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1200&q=80')">
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80" alt="Amalfi Coast Celebration">
+                    <div class="gallery-overlay">
+                        <h4>Amalfi Cliffside</h4>
+                        <p>Weddings</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <img id="lightboxImg" src="" alt="Enlarged Portfolio Image">
+    </div>
+
+    <section style="background: var(--color-white);">
+        <div class="container">
+            <div class="featured-story reveal">
+                <div class="featured-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1200&q=80" alt="Featured Story">
+                </div>
+                <div class="featured-content">
+                    <p class="section-subtitle">Featured Story</p>
+                    <blockquote class="featured-quote">"They captured the absolute soul of our wedding day without ever making us feel posed."</blockquote>
+                    <p class="featured-narrative">Set against the dramatic limestone cliffs of Positano, Elena and Marcus celebrated their union surrounded by intimate family and the scent of Mediterranean citrus. Our team documented every candid laugh, tear, and sun-drenched toast into a timeless visual heirloom.</p>
+                    <a href="#booking" class="btn btn-dark" style="align-self: flex-start;">Read Full Story</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="packages">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-subtitle">Investment</p>
+                <h2 class="section-title">Curated Collection Packages</h2>
+            </div>
+
+            <div class="packages-grid reveal">
+                <div class="package-card">
+                    <h3 class="package-title">Elopement</h3>
+                    <p class="package-desc">Intimate coverage designed for adventurous couples worldwide.</p>
+                    <div class="package-price">$4,500 <span>/ starting</span></div>
+                    <ul class="package-features">
+                        <li>Up to 6 hours of continuous coverage</li>
+                        <li>Lead photographer + assistant</li>
+                        <li>High-res digital gallery (400+ images)</li>
+                        <li>Online printing rights</li>
+                        <li>Travel included within continental US/EU</li>
+                    </ul>
+                    <a href="#booking" class="btn btn-outline" onclick="triggerActionModal(event)">Select Package</a>
+                </div>
+
+                <div class="package-card featured">
+                    <div class="package-badge">Most Popular</div>
+                    <h3 class="package-title">Classic Wedding</h3>
+                    <p class="package-desc">Comprehensive documentation for full-day celebrations.</p>
+                    <div class="package-price">$7,800 <span>/ starting</span></div>
+                    <ul class="package-features">
+                        <li>Up to 10 hours of comprehensive coverage</li>
+                        <li>Two professional photographers</li>
+                        <li>Complimentary engagement session</li>
+                        <li>High-res digital gallery (700+ images)</li>
+                        <li>Handcrafted linen keepsake album</li>
+                        <li>Cinematic highlight film (3-5 mins)</li>
+                    </ul>
+                    <a href="#booking" class="btn btn-gold" onclick="triggerActionModal(event)">Select Package</a>
+                </div>
+
+                <div class="package-card">
+                    <h3 class="package-title">Luxury Destination</h3>
+                    <p class="package-desc">Multi-day immersive storytelling for elite celebrations.</p>
+                    <div class="package-price">$12,000 <span>/ starting</span></div>
+                    <ul class="package-features">
+                        <li>Multi-day coverage (Welcome dinner + Wedding)</li>
+                        <li>Full creative team (Photo + Cinema)</li>
+                        <li>Drone aerial cinematography</li>
+                        <li>Expedited 2-week delivery rush</li>
+                        <li>Master heirloom leather photo album</li>
+                        <li>Worldwide travel included</li>
+                    </ul>
+                    <a href="#booking" class="btn btn-outline" onclick="triggerActionModal(event)">Select Package</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-strip">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-subtitle" style="color: var(--color-gold);">How We Work</p>
+                <h2 class="section-title">The Experience Journey</h2>
+            </div>
+
+            <div class="process-grid reveal">
+                <div class="process-step">
+                    <div class="step-num">01</div>
+                    <h4 class="step-title">Enquiry</h4>
+                    <p class="step-desc">Submit your date and venue details. We verify availability within 24 hours.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">02</div>
+                    <h4 class="step-title">Consultation</h4>
+                    <p class="step-desc">A video call to connect, discuss your vision, and tailor your collection.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">03</div>
+                    <h4 class="step-title">Wedding Day</h4>
+                    <p class="step-desc">Relax and live in the moment while we artfully capture your authentic story.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">04</div>
+                    <h4 class="step-title">Delivery</h4>
+                    <p class="step-desc">Receive your gorgeous online gallery and handcrafted heirlooms to treasure forever.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="about-grid reveal">
+                <div class="about-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=80" alt="Photographer Portrait">
+                </div>
+                <div class="about-text">
+                    <p class="section-subtitle">Meet The Artist</p>
+                    <h3>"Photography is the poetry of frozen moments."</h3>
+                    <p>Hello, I'm Clara Vance. For over a decade, I have dedicated my life to documenting authentic human connection through an artistic, editorial lens. My style blends documentary photojournalism with refined fine-art composition.</p>
+                    <p>When I'm not chasing golden hour light across European châteaux or rugged coastlines, you'll find me collecting vintage art books and brewing pour-over coffee.</p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <h4 class="counter" data-target="280">0</h4>
+                            <p>Weddings Shot</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4 class="counter" data-target="24">0</h4>
+                            <p>Countries</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4 class="counter" data-target="12">0</h4>
+                            <p>Years Experience</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: var(--color-white);">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-subtitle">Kind Words</p>
+                <h2 class="section-title">Loved By Couples Worldwide</h2>
+            </div>
+
+            <div class="testimonials-grid reveal">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Clara and her team were an absolute dream to work with. Looking back at our photos feels like stepping right back into our wedding day in Tuscany."</p>
+                    <div class="testimonial-author">
+                        <h5>Sophia & Liam</h5>
+                        <span>Tuscany Wedding</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"The cinematic film brought us both to tears. The framing, the audio, the pacing—it is pure Hollywood quality infused with genuine emotion."</p>
+                    <div class="testimonial-author">
+                        <h5>Chloe & David</h5>
+                        <span>Napa Valley</span>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Professional, discreet, and immensely talented. They made us feel completely at ease in front of the camera. Worth every single penny."</p>
+                    <div class="testimonial-author">
+                        <h5>Amara & Julian</h5>
+                        <span>Santorini Elopement</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="press-strip">
+        <div class="container">
+            <div class="press-logos">
+                <div class="press-logo">Vogue Weddings</div>
+                <div class="press-logo">Harper's Bazaar</div>
+                <div class="press-logo">Style Me Pretty</div>
+                <div class="press-logo">Brides</div>
+                <div class="press-logo">Green Wedding Shoes</div>
+            </div>
+        </div>
+    </div>
+
+    <section id="journal">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-subtitle">The Journal</p>
+                <h2 class="section-title">Stories & Advice</h2>
+            </div>
+
+            <div class="journal-grid reveal">
+                <div class="journal-card">
+                    <div class="journal-img">
+                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80" alt="Journal 1">
+                    </div>
+                    <div class="journal-content">
+                        <span class="journal-date">May 14, 2026</span>
+                        <h3 class="journal-title">Planning a Destination Wedding in Lake Como</h3>
+                        <p class="journal-excerpt">An expert guide to finding historic villas, navigating local permits, and catching the optimal evening light.</p>
+                        <a href="#booking" class="journal-link" onclick="triggerActionModal(event)">Read Article &rarr;</a>
+                    </div>
+                </div>
+
+                <div class="journal-card">
+                    <div class="journal-img">
+                        <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=800&q=80" alt="Journal 2">
+                    </div>
+                    <div class="journal-content">
+                        <span class="journal-date">April 02, 2026</span>
+                        <h3 class="journal-title">The Art of Unposed Couple Portraits</h3>
+                        <p class="journal-excerpt">Why natural motion and conversational prompts yield infinitely more authentic imagery than stiff posing.</p>
+                        <a href="#booking" class="journal-link" onclick="triggerActionModal(event)">Read Article &rarr;</a>
+                    </div>
+                </div>
+
+                <div class="journal-card">
+                    <div class="journal-img">
+                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Journal 3">
+                    </div>
+                    <div class="journal-content">
+                        <span class="journal-date">March 18, 2026</span>
+                        <h3 class="journal-title">Why First Looks Are Worth Considering</h3>
+                        <p class="journal-excerpt">Discover how carving out private quiet time before the ceremony transforms your wedding day timeline.</p>
+                        <a href="#booking" class="journal-link" onclick="triggerActionModal(event)">Read Article &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="booking-section" id="booking">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-subtitle">Check Availability</p>
+                <h2 class="section-title">Let’s Tell Your Story</h2>
+            </div>
+
+            <div class="booking-form-wrapper reveal">
+                <form class="booking-form" onsubmit="handleFormSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" placeholder="Jane Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="jane@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Wedding Date</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Destination / Venue</label>
+                        <input type="text" id="location" placeholder="e.g. Amalfi, Italy" required>
+                    </div>
+                    <div class="form-group full">
+                        <label for="package">Package Interest</label>
+                        <select id="package">
+                            <option value="elopement">Elopement ($4,500)</option>
+                            <option value="classic" selected>Classic Wedding ($7,800)</option>
+                            <option value="luxury">Luxury Destination ($12,000)</option>
+                        </select>
+                    </div>
+                    <div class="form-group full" style="margin-top: 12px;">
+                        <button type="submit" class="btn btn-gold" style="width: 100%;">Submit Enquiry</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-subtitle">Get In Touch</p>
+                <h2 class="section-title">Direct Studio Contacts</h2>
+            </div>
+
+            <div class="contact-grid reveal">
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h4>Studio Headquarters</h4>
+                    <p>450 Avenue Montaigne<br>75008 Paris, France</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <h4>Direct Line</h4>
+                    <p>+33 1 42 68 55 00<br>Mon – Fri, 9am – 6pm CET</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">✉️</div>
+                    <h4>Electronic Mail</h4>
+                    <p>hello@goldenhourstudio.com<br>Inquiries answered in 24h</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">Golden Hour <span>Studio</span></div>
+                    <p class="footer-blurb">Fine-art destination wedding photography and cinematic filmmaking capturing timeless expressions of love across the globe.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="social-link" onclick="triggerActionModal(event)">Ig</a>
+                        <a href="#" class="social-link" onclick="triggerActionModal(event)">Ptw</a>
+                        <a href="#" class="social-link" onclick="triggerActionModal(event)">Vim</a>
+                        <a href="#" class="social-link" onclick="triggerActionModal(event)">Pnt</a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Navigation</h5>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#packages">Packages</a></li>
+                        <li><a href="#about">About Studio</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Legal & Info</h5>
+                    <ul>
+                        <li><a href="#booking" onclick="triggerActionModal(event)">Privacy Policy</a></li>
+                        <li><a href="#booking" onclick="triggerActionModal(event)">Terms of Service</a></li>
+                        <li><a href="#contact">Client Portal</a></li>
+                        <li><a href="#journal">Press Inquiries</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2014–2026 Golden Hour Studio. All rights reserved.</p>
+                <p>Designed with Romance & Precision.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="actionModal">
+        <div class="modal-card">
+            <div class="modal-icon">✓</div>
+            <h3>Successfully Received</h3>
+            <p id="modalMessage">Thank you for connecting with Golden Hour Studio. Our director will reach out within 24 hours.</p>
+            <button class="btn btn-gold" style="width: 100%;" onclick="closeActionModal()">Close Window</button>
+        </div>
+    </div>
+
+    <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Portfolio Filtering System
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Lightbox System
+        function openLightbox(imgSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            lightboxImg.src = imgSrc;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Scroll Reveal Intersection Observer
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Animated Count-Up for Statistics
+        const counters = document.querySelectorAll('.counter');
+        let animated = false;
+
+        const countObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !animated) {
+                    animated = true;
+                    counters.forEach(counter => {
+                        const target = +counter.getAttribute('data-target');
+                        let count = 0;
+                        const speed = target / 40;
+                        
+                        const updateCount = () => {
+                            count += speed;
+                            if (count < target) {
+                                counter.innerText = Math.ceil(count);
+                                setTimeout(updateCount, 40);
+                            } else {
+                                counter.innerText = target + '+';
+                            }
+                        };
+                        updateCount();
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats-grid');
+        if (statsSection) countObserver.observe(statsSection);
+
+        // Modal Popup Triggers for all action buttons
+        function triggerActionModal(e) {
+            e.preventDefault();
+            document.getElementById('modalMessage').innerText = "Thank you for selecting an option with Golden Hour Studio. Our director will be in touch shortly.";
+            document.getElementById('actionModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            document.getElementById('modalMessage').innerText = "Your wedding enquiry has been successfully secured. We are thrilled at the prospect of telling your story!";
+            document.getElementById('actionModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            e.target.reset();
+        }
+
+        function closeActionModal() {
+            document.getElementById('actionModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal when clicking outside card
+        document.getElementById('actionModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('actionModal')) {
+                closeActionModal();
+            }
+        });
+    </script>
+</body>
+</html>
